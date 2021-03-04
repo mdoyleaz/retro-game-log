@@ -1,12 +1,11 @@
 defmodule RetroGameLogWeb.Schema.Resolvers.EventLog do
   alias RetroGameLog.Log
+  alias Absinthe.Relay.Connection
 
-  def list_events(_parent, _args, _resolution) do
-    {:ok, Log.list_event_log()}
+  def list_events(args, _resolution) do
+    Log.list_event_log()
+    |> Connection.from_list(args)
   end
 
-  def get_event(parent, %{id: product_id}, _resolution) do
-    IO.inspect(parent)
-    {:ok, Log.get_event!(product_id)}
-  end
+  def get_event(%{id: event_id}, _resolution), do: {:ok, Log.get_event!(event_id)}
 end
