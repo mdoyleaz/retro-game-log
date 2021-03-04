@@ -42,6 +42,7 @@ defmodule RetroGameLog.Mixfile do
       {:absinthe, "~> 1.6"},
       {:absinthe_plug, "~> 1.5"},
       {:absinthe_gen, "~> 0.2"},
+      {:absinthe_relay, "~> 1.5"},
       {:plug_cowboy, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:faker, "~> 0.16.0", only: [:dev, :test]}
