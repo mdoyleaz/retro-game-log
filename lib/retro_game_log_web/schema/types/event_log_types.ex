@@ -16,8 +16,8 @@ defmodule RetroGameLogWeb.Schema.Types.EventLogTypes do
   end
 
   input_object :event_log_filters do
-    field(:start_date, :string)
-    field(:end_date, :string)
+    field(:start_date, :date)
+    field(:end_date, :date)
     field(:event_type, :string)
     field(:errors, :boolean)
     field(:user_id, :id)
