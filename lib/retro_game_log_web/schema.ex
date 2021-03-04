@@ -4,6 +4,8 @@ defmodule RetroGameLogWeb.Schema do
 
   alias RetroGameLogWeb.Schema.Types
 
+  connection(node_type: :event)
+
   import_types(Types.EventLogTypes)
   import_types(Absinthe.Type.Custom)
   import_types(Absinthe.Plug.Types)

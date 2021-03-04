@@ -1,4 +1,4 @@
-defmodule RetroGameLog.Log.Event do
+defmodule RetroGameLog.EventLog.Event do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -18,6 +18,6 @@ defmodule RetroGameLog.Log.Event do
   def changeset(events, attrs) do
     events
     |> cast(attrs, [:user_id, :event_type, :error, :message, :payload])
-    |> validate_required([:user_id, :event_type, :message, :payload])
+    |> validate_required([:event_type, :message, :payload])
   end
 end

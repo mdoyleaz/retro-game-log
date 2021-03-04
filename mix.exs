@@ -45,6 +45,7 @@ defmodule RetroGameLog.Mixfile do
       {:absinthe_relay, "~> 1.5"},
       {:plug_cowboy, "~> 1.0"},
       {:jason, "~> 1.2"},
+      {:uuid, "~> 1.1"},
       {:faker, "~> 0.16.0", only: [:dev, :test]}
     ]
   end

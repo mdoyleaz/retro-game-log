@@ -15,11 +15,20 @@ defmodule RetroGameLogWeb.Schema.Types.EventLogTypes do
     field(:updated_at, :naive_datetime, name: "updated")
   end
 
-  connection(node_type: :event)
+  input_object :event_log_filters do
+    field(:start_date, :string)
+    field(:end_date, :string)
+    field(:event_type, :string)
+    field(:errors, :boolean)
+    field(:user_id, :id)
+  end
 
   object :event_log_queries do
     @desc "Get all event logs with paginated results"
+
     connection field(:all_event_logs, node_type: :event) do
+      arg(:filters, :event_log_filters)
+
       resolve(&list_events/2)
     end
 

@@ -1,4 +1,4 @@
-defmodule RetroGameLog.Log do
+defmodule RetroGameLog.EventLog do
   @moduledoc """
   The Log context.
   """
@@ -6,7 +6,7 @@ defmodule RetroGameLog.Log do
   import Ecto.Query, warn: false
   alias RetroGameLog.Repo
 
-  alias RetroGameLog.Log.Event
+  alias RetroGameLog.EventLog.Event
 
   @doc """
   Returns the list of event_log.
