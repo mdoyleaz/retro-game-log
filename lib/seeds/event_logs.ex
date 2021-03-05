@@ -2,7 +2,7 @@ defmodule Seeds.EventLogs do
   alias RetroGameLog.EventLog
   alias Faker
   @error [true, false]
-  @event_types ["create_record", "delete_record", "update_record", "get_record"]
+  @event_types [:create_record, :delete_record, :update_record, :get_record]
   def create_faker_data() do
     Enum.map(1..25, fn _ ->
       %{

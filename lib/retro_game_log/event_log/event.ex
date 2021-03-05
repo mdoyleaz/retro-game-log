@@ -6,7 +6,11 @@ defmodule RetroGameLog.EventLog.Event do
   @foreign_key_type :binary_id
   schema "event_log" do
     field(:user_id, :binary_id)
-    field(:event_type, :string)
+
+    field(:event_type, Ecto.Enum,
+      values: [:create_record, :delete_record, :update_record, :get_record]
+    )
+
     field(:message, :string)
     field(:error, :boolean)
     field(:payload, :string)
