@@ -3,7 +3,7 @@ defmodule RetroGameLog.EventLog do
   The Log context.
   """
 
-  import Ecto.Query, warn: false
+  import Ecto.Query
   alias RetroGameLog.Repo
 
   alias RetroGameLog.EventLog.Event
@@ -13,12 +13,55 @@ defmodule RetroGameLog.EventLog do
 
   ## Examples
 
-      iex> list_event_log()
+      iex> list_event_log(%{})
       [%Event{}, ...]
 
   """
-  def list_event_log do
-    Repo.all(Event)
+  def list_event_log(filters \\ %{}) do
+    Event
+    |> where(^event_log_filters(filters))
+    |> Repo.all()
+  end
+
+  @doc """
+  Dynamic query using provided filters
+
+  ## Examples
+
+    iex > event_log_filters(%{})
+    dynamic(...)
+  """
+  def event_log_filters(filters) do
+    IO.inspect(filters)
+
+    Enum.reduce(filters, dynamic(true), fn
+      {:event_type, value}, dynamic ->
+        dynamic([el], ^dynamic and el.event_type in ^value)
+
+      {:error, value}, dynamic ->
+        dynamic([el], ^dynamic and el.error == ^value)
+
+      {:user_id, value}, dynamic ->
+        dynamic([el], ^dynamic and el.user_id == ^value)
+
+      {:date_range, value}, dynamic ->
+        filter_date_range(value, dynamic)
+
+      {_, _}, dynamic ->
+        dynamic
+    end)
+  end
+
+  def filter_date_range(%{start: start_date, end: end_date}, dynamic) do
+    dynamic([el], ^dynamic and el.inserted_at >= ^start_date and el.inserted_at <= ^end_date)
+  end
+
+  def filter_date_range(%{start: start_date}, dynamic) do
+    dynamic([el], ^dynamic and el.inserted_at >= ^start_date)
+  end
+
+  def filter_date_range(%{end: end_date}, dynamic) do
+    dynamic([el], ^dynamic and el.inserted_at <= ^end_date)
   end
 
   @doc """
