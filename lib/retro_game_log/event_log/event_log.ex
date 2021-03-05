@@ -32,8 +32,6 @@ defmodule RetroGameLog.EventLog do
     dynamic(...)
   """
   def event_log_filters(filters) do
-    IO.inspect(filters)
-
     Enum.reduce(filters, dynamic(true), fn
       {:event_type, value}, dynamic ->
         dynamic([el], ^dynamic and el.event_type in ^value)
