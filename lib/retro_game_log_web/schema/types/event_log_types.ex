@@ -16,11 +16,15 @@ defmodule RetroGameLogWeb.Schema.Types.EventLogTypes do
   end
 
   input_object :event_log_filters do
-    field(:start_date, :date)
-    field(:end_date, :date)
-    field(:event_type, :event_types)
-    field(:errors, :boolean)
+    field(:date_range, :date_range_filter)
+    field(:event_type, list_of(:event_types))
+    field(:error, :boolean)
     field(:user_id, :id)
+  end
+
+  input_object :date_range_filter do
+    field(:start, :naive_datetime)
+    field(:end, :naive_datetime)
   end
 
   enum(:event_types, values: [:create_record, :delete_record, :update_record, :get_record])
@@ -29,7 +33,7 @@ defmodule RetroGameLogWeb.Schema.Types.EventLogTypes do
     @desc "Get all event logs with paginated results"
 
     connection field(:all_event_logs, node_type: :event) do
-      arg(:filters, :event_log_filters)
+      arg(:filters, :event_log_filters, default_value: %{})
 
       resolve(&list_events/2)
     end
