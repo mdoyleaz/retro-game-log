@@ -23,15 +23,7 @@ defmodule RetroGameLog.EventLog do
     |> Repo.all()
   end
 
-  @doc """
-  Dynamic query using provided filters
-
-  ## Examples
-
-    iex > event_log_filters(%{})
-    dynamic(...)
-  """
-  def event_log_filters(filters) do
+  defp event_log_filters(filters) do
     Enum.reduce(filters, dynamic(true), fn
       {:event_type, value}, dynamic ->
         dynamic([el], ^dynamic and el.event_type in ^value)
@@ -50,15 +42,15 @@ defmodule RetroGameLog.EventLog do
     end)
   end
 
-  def filter_date_range(%{start: start_date, end: end_date}, dynamic) do
+  defp filter_date_range(%{start: start_date, end: end_date}, dynamic) do
     dynamic([el], ^dynamic and el.inserted_at >= ^start_date and el.inserted_at <= ^end_date)
   end
 
-  def filter_date_range(%{start: start_date}, dynamic) do
+  defp filter_date_range(%{start: start_date}, dynamic) do
     dynamic([el], ^dynamic and el.inserted_at >= ^start_date)
   end
 
-  def filter_date_range(%{end: end_date}, dynamic) do
+  defp filter_date_range(%{end: end_date}, dynamic) do
     dynamic([el], ^dynamic and el.inserted_at <= ^end_date)
   end
 
