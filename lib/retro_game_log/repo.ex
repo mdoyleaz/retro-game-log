@@ -1,5 +1,5 @@
 defmodule RetroGameLog.Repo do
-  use Ecto.Repo, otp_app: :retro_game_log
+  use Ecto.Repo, otp_app: :retro_game_log, adapter: Ecto.Adapters.Postgres
 
   @doc """
   Dynamically loads the repository url from the

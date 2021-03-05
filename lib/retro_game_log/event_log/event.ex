@@ -1,4 +1,4 @@
-defmodule RetroGameLog.Log.Event do
+defmodule RetroGameLog.EventLog.Event do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -6,7 +6,11 @@ defmodule RetroGameLog.Log.Event do
   @foreign_key_type :binary_id
   schema "event_log" do
     field(:user_id, :binary_id)
-    field(:event_type, :string)
+
+    field(:event_type, Ecto.Enum,
+      values: [:create_record, :delete_record, :update_record, :get_record]
+    )
+
     field(:message, :string)
     field(:error, :boolean)
     field(:payload, :string)
@@ -18,6 +22,6 @@ defmodule RetroGameLog.Log.Event do
   def changeset(events, attrs) do
     events
     |> cast(attrs, [:user_id, :event_type, :error, :message, :payload])
-    |> validate_required([:user_id, :event_type, :message, :payload])
+    |> validate_required([:event_type, :message, :payload])
   end
 end
