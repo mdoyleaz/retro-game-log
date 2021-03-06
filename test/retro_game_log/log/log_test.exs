@@ -2,22 +2,24 @@ defmodule RetroGameLog.LogTest do
   use RetroGameLog.DataCase
 
   alias RetroGameLog.EventLog
+  alias RetroGameLog.EventLog.Event
 
   describe "event_log" do
-    alias RetroGameLog.EventLog.Event
-
     @valid_attrs %{
-      event_type: "some event_type",
+      event_type: :create_record,
       error: false,
       message: "some message",
-      data: "some data"
+      data: %{"data" => "data"}
     }
     @update_attrs %{
-      event_type: "some updated event_type",
+      event_type: :update_record,
       message: "some updated message",
-      data: "some updated data"
+      data: %{"data" => "data"}
     }
     @invalid_attrs %{event_type: nil, message: nil, data: nil}
+    @filters %{
+      event_type: [:create_record]
+    }
 
     def event_fixture(attrs \\ %{}) do
       {:ok, event} =
@@ -30,6 +32,8 @@ defmodule RetroGameLog.LogTest do
 
     test "list_event_log/0 returns all event_log" do
       events = event_fixture()
+      EventLog.list_event_log()
+
       assert EventLog.list_event_log() == [events]
     end
 
@@ -40,9 +44,9 @@ defmodule RetroGameLog.LogTest do
 
     test "create_event/1 with valid data creates a events" do
       assert {:ok, %Event{} = event} = EventLog.create_event(@valid_attrs)
-      assert event.event_type == "some event_type"
+      assert event.event_type == :create_record
       assert event.message == "some message"
-      assert event.data == "some data"
+      assert event.data == %{"data" => "data"}
     end
 
     test "create_event/1 with invalid data returns error changeset" do
@@ -53,9 +57,9 @@ defmodule RetroGameLog.LogTest do
       event = event_fixture()
       assert {:ok, event} = EventLog.update_event(event, @update_attrs)
       assert %Event{} = event
-      assert event.event_type == "some updated event_type"
+      assert event.event_type == :update_record
       assert event.message == "some updated message"
-      assert event.data == "some updated data"
+      assert event.data == %{"data" => "data"}
     end
 
     test "update_event/2 with invalid data returns error changeset" do
@@ -73,6 +77,17 @@ defmodule RetroGameLog.LogTest do
     test "change_event/1 returns a events changeset" do
       event = event_fixture()
       assert %Ecto.Changeset{} = EventLog.change_event(event)
+    end
+
+    test "list_event_log with filters" do
+      EventLog.create_event(@valid_attrs)
+
+      @valid_attrs
+      |> Map.put(:event_type, :update_record)
+      |> EventLog.create_event()
+
+      [event | _] = EventLog.list_event_log(@filters)
+      assert event.event_type == :create_record
     end
   end
 end

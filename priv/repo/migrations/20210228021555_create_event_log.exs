@@ -8,7 +8,7 @@ defmodule RetroGameLog.Repo.Migrations.CreateEventLog do
       add(:event_type, :string)
       add(:error, :boolean, default: false)
       add(:message, :string)
-      add(:data, :text)
+      add(:data, :map)
 
       timestamps()
     end

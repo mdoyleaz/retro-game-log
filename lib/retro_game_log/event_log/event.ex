@@ -13,7 +13,7 @@ defmodule RetroGameLog.EventLog.Event do
 
     field(:message, :string)
     field(:error, :boolean)
-    field(:data, :string)
+    field(:data, :map)
 
     timestamps()
   end

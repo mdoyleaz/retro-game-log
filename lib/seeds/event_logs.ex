@@ -10,7 +10,7 @@ defmodule Seeds.EventLogs do
         event_type: Enum.random(@event_types),
         message: Faker.Lorem.Shakespeare.as_you_like_it(),
         error: Enum.random(@error),
-        data: "{\"data\": \"data\"}"
+        data: %{data: "data"}
       }
     end)
   end
