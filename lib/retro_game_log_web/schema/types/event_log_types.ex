@@ -10,7 +10,7 @@ defmodule RetroGameLogWeb.Schema.Types.EventLogTypes do
     field(:event_type, :string)
     field(:message, :string)
     field(:error, :boolean)
-    field(:payload, :string)
+    field(:data, :string)
     field(:inserted_at, :naive_datetime, name: "created")
     field(:updated_at, :naive_datetime, name: "updated")
   end

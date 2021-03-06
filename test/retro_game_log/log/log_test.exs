@@ -10,14 +10,14 @@ defmodule RetroGameLog.LogTest do
       event_type: "some event_type",
       error: false,
       message: "some message",
-      payload: "some payload"
+      data: "some data"
     }
     @update_attrs %{
       event_type: "some updated event_type",
       message: "some updated message",
-      payload: "some updated payload"
+      data: "some updated data"
     }
-    @invalid_attrs %{event_type: nil, message: nil, payload: nil}
+    @invalid_attrs %{event_type: nil, message: nil, data: nil}
 
     def event_fixture(attrs \\ %{}) do
       {:ok, event} =
@@ -42,7 +42,7 @@ defmodule RetroGameLog.LogTest do
       assert {:ok, %Event{} = event} = EventLog.create_event(@valid_attrs)
       assert event.event_type == "some event_type"
       assert event.message == "some message"
-      assert event.payload == "some payload"
+      assert event.data == "some data"
     end
 
     test "create_event/1 with invalid data returns error changeset" do
@@ -55,7 +55,7 @@ defmodule RetroGameLog.LogTest do
       assert %Event{} = event
       assert event.event_type == "some updated event_type"
       assert event.message == "some updated message"
-      assert event.payload == "some updated payload"
+      assert event.data == "some updated data"
     end
 
     test "update_event/2 with invalid data returns error changeset" do
