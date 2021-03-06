@@ -13,7 +13,7 @@ defmodule RetroGameLog.EventLog.Event do
 
     field(:message, :string)
     field(:error, :boolean)
-    field(:payload, :string)
+    field(:data, :string)
 
     timestamps()
   end
@@ -21,7 +21,7 @@ defmodule RetroGameLog.EventLog.Event do
   @doc false
   def changeset(events, attrs) do
     events
-    |> cast(attrs, [:user_id, :event_type, :error, :message, :payload])
-    |> validate_required([:event_type, :message, :payload])
+    |> cast(attrs, [:user_id, :event_type, :error, :message, :data])
+    |> validate_required([:event_type, :message, :data])
   end
 end
