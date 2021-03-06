@@ -12,3 +12,4 @@
 
 ## Event Logs
 Seeds.EventLogs.add_event_logs()
+Seeds.Users.add_users()

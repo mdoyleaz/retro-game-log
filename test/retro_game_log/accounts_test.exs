@@ -6,9 +6,9 @@ defmodule RetroGameLog.AccountsTest do
   describe "users" do
     alias RetroGameLog.Accounts.User
 
-    @valid_attrs %{password: "some password", username: "some username"}
-    @update_attrs %{password: "some updated password", username: "some updated username"}
-    @invalid_attrs %{password: nil, username: nil}
+    @valid_attrs %{email: "rlg@example.com", password: "some password"}
+    @update_attrs %{email: "rlg_updated@example.com", password: "some updated password"}
+    @invalid_attrs %{email: nil, password: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -31,8 +31,8 @@ defmodule RetroGameLog.AccountsTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
-      assert user.password == "some password"
-      assert user.username == "some username"
+      assert {:ok, user} == Argon2.check_pass(user, "some password", hash_key: :password)
+      assert user.email == "rlg@example.com"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -42,8 +42,8 @@ defmodule RetroGameLog.AccountsTest do
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Accounts.update_user(user, @update_attrs)
-      assert user.password == "some updated password"
-      assert user.username == "some updated username"
+      assert {:ok, user} == Argon2.check_pass(user, "some updated password", hash_key: :password)
+      assert user.email == "rlg_updated@example.com"
     end
 
     test "update_user/2 with invalid data returns error changeset" do
