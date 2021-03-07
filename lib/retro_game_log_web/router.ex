@@ -6,6 +6,7 @@ defmodule RetroGameLogWeb.Router do
     plug(:accepts, ["json"])
     plug(:fetch_session)
     plug(:put_secure_browser_headers)
+    plug(RetroGameLogWeb.Plugs.Context)
   end
 
   scope "/api" do

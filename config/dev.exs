@@ -44,3 +44,8 @@ config :retro_game_log, RetroGameLog.Repo,
   database: "retro_game_log_dev",
   hostname: "localhost",
   pool_size: 10
+
+# Guardian Config
+config :retro_game_log, RetroGameLog.Accounts.Guardian,
+  issuer: "retro_game_log",
+  secret_key: "i3AoJn7k+eAHvRntugixSwb+KHvgyLZ4L6IoDDFDobWW6FVV/ekfRpvpqJMdjU1"

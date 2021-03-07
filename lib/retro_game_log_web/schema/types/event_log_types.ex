@@ -2,7 +2,7 @@ defmodule RetroGameLogWeb.Schema.Types.EventLogTypes do
   use Absinthe.Schema.Notation
   use Absinthe.Relay.Schema.Notation, :modern
 
-  import RetroGameLogWeb.Schema.Resolvers.EventLog
+  import RetroGameLogWeb.Resolvers.EventLog
 
   object :event do
     field(:id, :id)

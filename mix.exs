@@ -47,6 +47,9 @@ defmodule RetroGameLog.Mixfile do
       {:plug_cowboy, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:uuid, "~> 1.1"},
+      {:comeonin, "~> 5.3"},
+      {:guardian, "~> 2.1"},
+      {:argon2_elixir, "~> 2.4"},
       {:faker, "~> 0.16.0", only: [:dev, :test]}
     ]
   end

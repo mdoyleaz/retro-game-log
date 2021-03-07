@@ -21,6 +21,12 @@ config :retro_game_log, RetroGameLogWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+# Guardian Config
+config :retro_game_log, RetroGameLog.Accounts.Guardian,
+  issuer: "retro_game_log",
+  # ADD ENVIRONMENT VARIABLE FOR PRODUCTION
+  secret_key: ""
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
