@@ -6,6 +6,7 @@ defmodule RetroGameLogWeb.Schema do
   alias RetroGameLogWeb.Schema.Scalars
 
   connection(node_type: :event)
+  connection(node_type: :console)
 
   # Type Imports
   import_types(Types.EventLogTypes)
@@ -18,5 +19,6 @@ defmodule RetroGameLogWeb.Schema do
 
   query do
     import_fields(:event_log_queries)
+    import_fields(:console_queries)
   end
 end

@@ -4,7 +4,7 @@ defmodule RetroGameLogWeb.Schema.Types.GameLibrary.ConsoleTypes do
 
   import RetroGameLogWeb.Resolvers.GameLibrary.Consoles
 
-  object :event do
+  object :console do
     field(:id, :id)
     field(:name, :string)
     field(:manufacturer, :string)
@@ -15,5 +15,19 @@ defmodule RetroGameLogWeb.Schema.Types.GameLibrary.ConsoleTypes do
     field(:wikipedia_url, :string)
     field(:inserted_at, :naive_datetime, name: "created")
     field(:updated_at, :naive_datetime, name: "updated")
+  end
+
+  object :console_queries do
+    @desc "Get all consoles"
+
+    connection field(:all_consoles, node_type: :console) do
+      resolve(&list_consoles/2)
+    end
+
+    @desc "Get a single console"
+    field(:get_console, :console) do
+      arg(:id, non_null(:id))
+      resolve(&get_console/2)
+    end
   end
 end
