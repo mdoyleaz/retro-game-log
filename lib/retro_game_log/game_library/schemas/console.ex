@@ -1,10 +1,10 @@
-defmodule RetroGameLog.GameLibrary.Platform do
+defmodule RetroGameLog.GameLibrary.Console do
   use Ecto.Schema
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
-  schema "platforms" do
+  schema "consoles" do
     field(:graphics, :string)
     field(:manufactured_country, :string)
     field(:manufacturer, :string)
@@ -17,8 +17,8 @@ defmodule RetroGameLog.GameLibrary.Platform do
   end
 
   @doc false
-  def changeset(platform, attrs) do
-    platform
+  def changeset(console, attrs) do
+    console
     |> cast(attrs, [
       :manufacturer,
       :name,
