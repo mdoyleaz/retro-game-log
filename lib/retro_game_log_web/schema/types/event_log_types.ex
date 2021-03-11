@@ -39,7 +39,7 @@ defmodule RetroGameLogWeb.Schema.Types.EventLogTypes do
     end
 
     @desc "Get a single event log by id"
-    field :event_log, :event do
+    field(:event_log, :event) do
       arg(:id, non_null(:id))
       resolve(&get_event/2)
     end

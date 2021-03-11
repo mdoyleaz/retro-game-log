@@ -6,9 +6,11 @@ defmodule RetroGameLogWeb.Schema do
   alias RetroGameLogWeb.Schema.Scalars
 
   connection(node_type: :event)
+  connection(node_type: :console)
 
   # Type Imports
   import_types(Types.EventLogTypes)
+  import_types(Types.GameLibrary.ConsoleTypes)
   import_types(Absinthe.Type.Custom)
   import_types(Absinthe.Plug.Types)
 
@@ -17,5 +19,10 @@ defmodule RetroGameLogWeb.Schema do
 
   query do
     import_fields(:event_log_queries)
+    import_fields(:console_queries)
+  end
+
+  mutation do
+    import_fields(:console_mutations)
   end
 end
