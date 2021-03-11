@@ -28,14 +28,30 @@ defmodule RetroGameLog.GameLibrary.Consoles do
 
   ## Examples
 
-      iex> get_console!(123)
+      iex> get_console!("e99328a2-a8ed-4f7a-9e3e-99141f4fb2c6")
       %Console{}
 
-      iex> get_console!(456)
+      iex> get_console!("4808a407-717e-4073-8657-4cbc88bc03c7")
       ** (Ecto.NoResultsError)
 
   """
   def get_console!(id), do: Repo.get!(Console, id)
+
+  @doc """
+  Gets a single console.
+
+  Returns nil if the Console does not exist.
+
+  ## Examples
+
+      iex> get_console("e99328a2-a8ed-4f7a-9e3e-99141f4fb2c6")
+      %Console{}
+
+      iex> get_console("4808a407-717e-4073-8657-4cbc88bc03c7")
+      nil
+
+  """
+  def get_console(id), do: Repo.get(Console, id)
 
   @doc """
   Creates a console.
@@ -71,6 +87,17 @@ defmodule RetroGameLog.GameLibrary.Consoles do
     console
     |> Console.changeset(attrs)
     |> Repo.update()
+  end
+
+  def update_console(id, attrs) do
+    case get_console(id) do
+      nil ->
+        {:error, :console_not_found}
+
+      console ->
+        console
+        |> update_console(attrs)
+    end
   end
 
   @doc """

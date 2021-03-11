@@ -21,4 +21,8 @@ defmodule RetroGameLogWeb.Schema do
     import_fields(:event_log_queries)
     import_fields(:console_queries)
   end
+
+  mutation do
+    import_fields(:console_mutations)
+  end
 end
