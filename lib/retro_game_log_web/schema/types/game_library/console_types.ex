@@ -69,5 +69,11 @@ defmodule RetroGameLogWeb.Schema.Types.GameLibrary.ConsoleTypes do
 
       resolve(&update_console/2)
     end
+
+    @desc "Delete a console"
+    field :update_console, :console do
+      arg(:id, non_null(:id))
+      resolve(&delete_console/2)
+    end
   end
 end

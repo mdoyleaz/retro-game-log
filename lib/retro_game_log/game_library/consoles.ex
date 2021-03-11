@@ -117,6 +117,29 @@ defmodule RetroGameLog.GameLibrary.Consoles do
   end
 
   @doc """
+  Deletes a console by id.
+
+  ## Examples
+
+      iex> delete_console(id)
+      {:ok, %Console{}}
+
+      iex> delete_console(console)
+      {:error, :console_not_found}
+
+  """
+  def delete_console(id) do
+    case get_console(id) do
+      nil ->
+        {:error, :console_not_found}
+
+      console ->
+        console
+        |> delete_console()
+    end
+  end
+
+  @doc """
   Returns an `%Ecto.Changeset{}` for tracking console changes.
 
   ## Examples
