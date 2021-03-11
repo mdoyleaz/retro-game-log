@@ -9,6 +9,7 @@ defmodule RetroGameLogWeb.Schema do
 
   # Type Imports
   import_types(Types.EventLogTypes)
+  import_types(Types.GameLibrary.ConsoleTypes)
   import_types(Absinthe.Type.Custom)
   import_types(Absinthe.Plug.Types)
 
