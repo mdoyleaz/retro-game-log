@@ -6,7 +6,7 @@ defmodule RetroGameLog.GameLibrary.Consoles do
   import Ecto.Query, warn: false
   alias RetroGameLog.Repo
 
-  alias RetroGameLog.GameLibrary.Console
+  alias RetroGameLog.GameLibrary.Schemas.Console
 
   @doc """
   Returns the list of consoles.

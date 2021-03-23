@@ -4,7 +4,7 @@ defmodule RetroGameLog.ConsolesTest do
   alias RetroGameLog.GameLibrary.Consoles
 
   describe "consoles" do
-    alias RetroGameLog.GameLibrary.Console
+    alias RetroGameLog.GameLibrary.Schemas.Console
 
     @valid_attrs %{
       graphics: "some graphics",
