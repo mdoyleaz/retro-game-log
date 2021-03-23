@@ -11,5 +11,11 @@
 # and so on) as they will fail if something goes wrong.
 
 ## Event Logs
-Seeds.EventLogs.add_event_logs()
-Seeds.Users.add_users()
+case Mix.env() do
+  :dev ->
+    Seeds.EventLogs.add_event_logs()
+    Seeds.Users.add_users()
+
+  _ ->
+    :ok
+end
