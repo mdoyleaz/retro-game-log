@@ -18,7 +18,5 @@ defmodule RetroGameLogWeb.Resolvers.GameLibrary.Consoles do
   def update_console(%{id: id, console_details: args}, _resolution),
     do: Consoles.update_console(id, args)
 
-  def delete_console(%{id: id}, __resolution) do
-    Consoles.delete_console(id)
-  end
+  def delete_console(%{id: id}, __resolution), do: Consoles.delete_console(id)
 end
