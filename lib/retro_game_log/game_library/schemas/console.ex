@@ -11,11 +11,9 @@ defmodule RetroGameLog.GameLibrary.Schemas.Console do
     field(:manufactured_country, :string)
     field(:manufacturer, :string)
     field(:name, :string)
-    field(:release_date, :string)
+    field(:release_date, :date)
     field(:units_sold, :string)
     field(:wikipedia_url, :string)
-
-    has_many(:games, Game)
 
     timestamps()
   end

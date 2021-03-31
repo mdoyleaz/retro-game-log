@@ -7,10 +7,12 @@ defmodule RetroGameLogWeb.Schema do
 
   connection(node_type: :event)
   connection(node_type: :console)
+  connection(node_type: :game)
 
   # Type Imports
   import_types(Types.EventLogTypes)
   import_types(Types.GameLibrary.ConsoleTypes)
+  import_types(Types.GameLibrary.GameTypes)
   import_types(Absinthe.Type.Custom)
   import_types(Absinthe.Plug.Types)
 
@@ -20,6 +22,7 @@ defmodule RetroGameLogWeb.Schema do
   query do
     import_fields(:event_log_queries)
     import_fields(:console_queries)
+    import_fields(:game_queries)
   end
 
   mutation do
