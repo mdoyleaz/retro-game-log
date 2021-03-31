@@ -13,7 +13,7 @@ defmodule RetroGameLog.GameLibrary.GamesTest do
       genre: "some genre",
       name: "some name",
       publisher: "some publisher",
-      release_date: "some release_date",
+      release_date: Date.from_iso8601!("2020-03-01"),
       wikipedia_url: "some wikipedia_url",
       console: %{}
     }
@@ -23,7 +23,7 @@ defmodule RetroGameLog.GameLibrary.GamesTest do
       genre: "some updated genre",
       name: "some updated name",
       publisher: "some updated publisher",
-      release_date: "some updated release_date",
+      release_date: Date.from_iso8601!("2020-03-02"),
       wikipedia_url: "some updated wikipedia_url"
     }
     @invalid_attrs %{
@@ -74,7 +74,7 @@ defmodule RetroGameLog.GameLibrary.GamesTest do
       assert game.genre == "some genre"
       assert game.name == "some name"
       assert game.publisher == "some publisher"
-      assert game.release_date == "some release_date"
+      assert game.release_date == Date.from_iso8601!("2020-03-01")
       assert game.wikipedia_url == "some wikipedia_url"
       assert game.console_id == console_id
     end
@@ -91,7 +91,7 @@ defmodule RetroGameLog.GameLibrary.GamesTest do
       assert game.genre == "some updated genre"
       assert game.name == "some updated name"
       assert game.publisher == "some updated publisher"
-      assert game.release_date == "some updated release_date"
+      assert game.release_date == Date.from_iso8601!("2020-03-02")
       assert game.wikipedia_url == "some updated wikipedia_url"
     end
 

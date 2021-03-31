@@ -25,8 +25,6 @@ defmodule RetroGameLogWeb.Schema.Types.GameLibrary.ConsoleTypes do
     field(:units_solds, :string)
     field(:graphics, :string)
     field(:wikipedia_url, :string)
-    field(:inserted_at, :naive_datetime, name: "created")
-    field(:updated_at, :naive_datetime, name: "updated")
   end
 
   input_object :console_details do
@@ -35,8 +33,6 @@ defmodule RetroGameLogWeb.Schema.Types.GameLibrary.ConsoleTypes do
     field(:units_solds, :string)
     field(:graphics, :string)
     field(:wikipedia_url, :string)
-    field(:inserted_at, :naive_datetime, name: "created")
-    field(:updated_at, :naive_datetime, name: "updated")
   end
 
   object :console_queries do

@@ -11,7 +11,7 @@ defmodule RetroGameLog.ConsolesTest do
       manufactured_country: "some manufactured_country",
       manufacturer: "some manufacturer",
       name: "some name",
-      release_date: "some release_date",
+      release_date: Date.from_iso8601!("2020-03-01"),
       units_sold: "some units_sold"
     }
     @update_attrs %{
@@ -19,7 +19,7 @@ defmodule RetroGameLog.ConsolesTest do
       manufactured_country: "some updated manufactured_country",
       manufacturer: "some updated manufacturer",
       name: "some updated name",
-      release_date: "some updated release_date",
+      release_date: Date.from_iso8601!("2020-03-02"),
       units_sold: "some updated units_sold"
     }
     @invalid_attrs %{
@@ -56,7 +56,7 @@ defmodule RetroGameLog.ConsolesTest do
       assert console.manufactured_country == "some manufactured_country"
       assert console.manufacturer == "some manufacturer"
       assert console.name == "some name"
-      assert console.release_date == "some release_date"
+      assert console.release_date == Date.from_iso8601!("2020-03-01")
       assert console.units_sold == "some units_sold"
     end
 
@@ -71,7 +71,7 @@ defmodule RetroGameLog.ConsolesTest do
       assert console.manufactured_country == "some updated manufactured_country"
       assert console.manufacturer == "some updated manufacturer"
       assert console.name == "some updated name"
-      assert console.release_date == "some updated release_date"
+      assert console.release_date == Date.from_iso8601!("2020-03-02")
       assert console.units_sold == "some updated units_sold"
     end
 
