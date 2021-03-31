@@ -13,12 +13,31 @@ defmodule RetroGameLog.GameLibrary.Games do
 
   ## Examples
 
-      iex> list_games()
+      iex> list_games(%{})
       [%Game{}, ...]
 
   """
-  def list_games do
-    Repo.all(Game)
+
+  def list_games(filters \\ %{}) do
+    Game
+    |> where(^game_query_filters(filters))
+    |> Repo.all()
+  end
+
+  defp game_query_filters(filters) do
+    Enum.reduce(filters, dynamic(true), fn
+      {:console, value}, dynamic ->
+        dynamic([g], ^dynamic and g.console_id == ^value)
+
+      {:publisher, value}, dynamic ->
+        dynamic([g], ^dynamic and g.publisher == ^value)
+
+      {:genre, value}, dynamic ->
+        dynamic([g], ^dynamic and g.genre == ^value)
+
+      {_, _}, dynamic ->
+        dynamic
+    end)
   end
 
   @doc """

@@ -3,7 +3,9 @@ defmodule RetroGameLogWeb.Resolvers.EventLog do
 
   alias RetroGameLog.EventLog
 
-  def list_events(%{filters: filters} = args, _resolution) do
+  def list_events(args, _resolution) do
+    filters = Map.get(args, :filters)
+
     EventLog.list_event_log(filters)
     |> Connection.from_list(args)
   end
