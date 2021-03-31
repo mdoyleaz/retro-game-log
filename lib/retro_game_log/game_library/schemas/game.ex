@@ -12,7 +12,7 @@ defmodule RetroGameLog.GameLibrary.Schemas.Game do
     field(:genre, :string)
     field(:name, :string)
     field(:publisher, :string)
-    field(:release_date, :string)
+    field(:release_date, :date)
     field(:wikipedia_url, :string)
 
     belongs_to(:console, Console, type: :binary_id)

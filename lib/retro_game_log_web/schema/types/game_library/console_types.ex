@@ -9,7 +9,7 @@ defmodule RetroGameLogWeb.Schema.Types.GameLibrary.ConsoleTypes do
     field(:name, :string)
     field(:manufacturer, :string)
     field(:manufactured_country, :string)
-    field(:release_date, :string)
+    field(:release_date, :date)
     field(:units_solds, :string)
     field(:graphics, :string)
     field(:wikipedia_url, :string)
@@ -21,7 +21,7 @@ defmodule RetroGameLogWeb.Schema.Types.GameLibrary.ConsoleTypes do
     field(:name, non_null(:string))
     field(:manufacturer, non_null(:string))
     field(:manufactured_country, :string)
-    field(:release_date, :string)
+    field(:release_date, :date)
     field(:units_solds, :string)
     field(:graphics, :string)
     field(:wikipedia_url, :string)
@@ -31,7 +31,7 @@ defmodule RetroGameLogWeb.Schema.Types.GameLibrary.ConsoleTypes do
 
   input_object :console_details do
     field(:manufactured_country, :string)
-    field(:release_date, :string)
+    field(:release_date, :date)
     field(:units_solds, :string)
     field(:graphics, :string)
     field(:wikipedia_url, :string)

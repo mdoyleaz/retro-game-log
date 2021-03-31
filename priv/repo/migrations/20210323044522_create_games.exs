@@ -9,7 +9,7 @@ defmodule RetroGameLog.Repo.Migrations.CreateGames do
       add(:name, :string)
       add(:genre, :string)
       add(:country, :string)
-      add(:release_date, :string)
+      add(:release_date, :date)
       add(:wikipedia_url, :string)
       add(:console_id, references(:consoles, on_delete: :nothing, type: :binary_id))
 

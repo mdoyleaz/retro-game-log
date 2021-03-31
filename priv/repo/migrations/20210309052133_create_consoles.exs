@@ -7,7 +7,7 @@ defmodule RetroGameLog.Repo.Migrations.CreateConsoles do
       add(:manufacturer, :string)
       add(:name, :string)
       add(:manufactured_country, :string)
-      add(:release_date, :string)
+      add(:release_date, :date)
       add(:graphics, :string)
       add(:units_sold, :string)
       add(:wikipedia_url, :string)
